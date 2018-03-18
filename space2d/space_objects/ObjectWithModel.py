@@ -1,6 +1,6 @@
 from .SpaceObject import SpaceObject
 from .Model2d import Model2d
-from .Math import *
+from space2d.Math import *
 
 
 class ObjectWithModel(SpaceObject):

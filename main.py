@@ -1,7 +1,7 @@
 import sdl2_wrapper as draw
 from space2d import Renderer
-from space2d.ObjectWithModel import ObjectWithModel
-from space2d.Planet import Planet
+from space2d.space_objects.ObjectWithModel import ObjectWithModel
+from space2d.space_objects.Planet import Planet
 import debug
 import time
 
@@ -16,7 +16,7 @@ draw.set_color(128, 0, 200)
 x = 0
 y = 0
 
-while not draw.is_window_closed():
+while not draw.is_window_closed() and not draw.read_key():
     draw.clear_screen(0, 0, 16)
     Renderer.render_object_with_model(shp)
     Renderer.set_viewpoint(x, y)

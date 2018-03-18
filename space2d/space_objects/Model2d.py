@@ -1,4 +1,4 @@
-from .Math import multiply_vector_by_matrix
+from space2d.Math import multiply_vector_by_matrix
 
 class Model2d:
 

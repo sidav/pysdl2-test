@@ -37,6 +37,13 @@ def clear_screen(r=0, g=0, b=0):
     renderer.clear(color)
 
 
+def read_key():
+    event = sdl2.SDL_Event()
+    if sdl2.SDL_PollEvent(ctypes.byref(event)) != 0:
+        if event.type == sdl2.SDL_KeyboardEvent:
+            return True
+
+
 def flush_screen():
     renderer.present()
 

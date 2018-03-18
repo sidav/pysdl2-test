@@ -1,7 +1,6 @@
-from .ObjectWithModel import ObjectWithModel
-from .Planet import Planet
+from space2d.space_objects.Planet import Planet
 from .Player import Player
-from .Ship import Ship
+from space2d.space_objects.Ship import Ship
 
 
 class Starsystem:

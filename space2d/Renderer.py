@@ -1,7 +1,4 @@
 import sdl2_wrapper as draw
-from .ObjectWithModel import ObjectWithModel
-from .Model2d import Model2d
-from .Planet import Planet
 
 viewpoint = (320.0, 200.0)
 zoom_factor = 0.01
