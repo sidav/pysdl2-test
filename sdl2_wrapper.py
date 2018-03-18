@@ -33,7 +33,7 @@ def line(x1, y1, x2=-1, y2=-1):
     if x2 == y2 == -1:
         renderer.draw_line([int(x1[0]), int(x1[1]), int(y1[0]), int(y1[1])]) # what a shame...
     else:
-        renderer.draw_line([x1, y1, x2, y2])
+        renderer.draw_line([int(x1), int(y1), int(x2), int(y2)])
 
 
 def circle(x0, y0, radius):

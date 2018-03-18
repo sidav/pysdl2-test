@@ -2,10 +2,6 @@ from .Math import multiply_vector_by_matrix
 
 class Model2d:
 
-    rotation_matrix = [
-        [1, 0],
-        [0, 1]
-    ]
     vertices = []
     edges = []
 
@@ -43,9 +39,3 @@ class Model2d:
 
     def get_vertices(self):
         return self.vertices
-
-    def get_rotated_vertices(self):
-        rot = []
-        for vert in self.vertices:
-            rot.append(multiply_vector_by_matrix(vert, self.rotation_matrix))
-        return rot
