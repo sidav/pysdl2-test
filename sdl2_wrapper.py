@@ -1,14 +1,17 @@
 import sdl2.ext as sdl
 
+window_width = window_height = 0
 renderer = None
 window = None
 current_color = sdl.Color(255, 255, 255)
 
 
 def init(windowname='ZOMG FORGOT TO NAME IT', width=320, height=200):
-    global renderer, window
+    global renderer, window, window_width, window_height
+    window_width = width
+    window_height = height
     sdl.init()
-    window = sdl.Window(windowname, size=(width, height))
+    window = sdl.Window(windowname, size=(window_width, window_height))
     window.show()
     renderer = sdl.Renderer(window)
 
@@ -26,8 +29,11 @@ def pixel(x, y):
     renderer.draw_point([x, y])
 
 
-def line(x1, y1, x2, y2):
-    renderer.draw_line([x1, y1, x2, y2])
+def line(x1, y1, x2=-1, y2=-1):
+    if x2 == y2 == -1:
+        renderer.draw_line([int(x1[0]), int(x1[1]), int(y1[0]), int(y1[1])]) # what a shame...
+    else:
+        renderer.draw_line([x1, y1, x2, y2])
 
 
 def circle(x0, y0, radius):
