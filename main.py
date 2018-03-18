@@ -18,7 +18,7 @@ y = 0
 
 while not draw.is_window_closed():
     draw.clear_screen(0, 0, 16)
-    Renderer.render_ship(shp)
+    Renderer.render_object_with_model(shp)
     Renderer.set_viewpoint(x, y)
     x -= 1
     y -= 1

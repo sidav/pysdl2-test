@@ -15,4 +15,4 @@ def draw_system(system):
 
     ships = system.get_ships_list()
     for s in ships:
-        rend.render_ship(s)
+        rend.render_object_with_model(s)

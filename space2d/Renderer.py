@@ -23,11 +23,12 @@ def render_planet(planet):
     zoomed_radius = rad * zoom_factor
     draw.circle(sx, sy, zoomed_radius)
 
-def render_ship(ship):
-    model2d = ship.get_model()
-    verts = ship.get_rotated_vertices()
+
+def render_object_with_model(obj):
+    model2d = obj.get_model()
+    verts = obj.get_rotated_vertices()
     edges = model2d.get_edges()
-    cx, cy = ship.get_coords()
+    cx, cy = obj.get_coords()
     for edge in edges:
         for curr in range(len(edge) - 1): # well fuck
             curr_vert = edge[curr]
