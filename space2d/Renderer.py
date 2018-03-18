@@ -1,13 +1,24 @@
 import sdl2_wrapper as draw
 from .Ship import Ship
 from .Model2d import Model2d
+from .Planet import Planet
 
 viewpoint = (160.0, 100.0)
-zoom_factor = 1.5
+zoom_factor = 1.0
+
 
 def set_viewpoint(x, y):
     viewpoint = (x, y)
 
+
+def render_planet(planet):
+    rad = planet.get_radius()
+    cx, cy = planet.get_coords()
+    # TODO: clip planet off screen
+    sx = viewpoint[0] + cx * zoom_factor
+    sy = viewpoint[1] + cy * zoom_factor
+    zoomed_radius = rad * zoom_factor
+    draw.circle(sx, sy, zoomed_radius)
 
 def render_ship(ship):
     model2d = ship.get_model()

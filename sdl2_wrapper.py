@@ -58,6 +58,9 @@ def line(x1, y1, x2=-1, y2=-1):
 
 
 def circle(x0, y0, radius):
+    x0 = int(x0)
+    y0 = int(y0)
+    radius = int(radius)
     x = radius
     y = 0
     dx = 1
