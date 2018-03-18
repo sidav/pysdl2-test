@@ -8,15 +8,18 @@ zoom_factor = 1.0
 
 
 def set_viewpoint(x, y):
-    viewpoint = (x, y)
+    WIDTH = draw.window_width
+    HEIGHT = draw.window_height
+    global viewpoint
+    viewpoint = (x + WIDTH // 2, y + HEIGHT // 2)
 
 
 def render_planet(planet):
     rad = planet.get_radius()
     cx, cy = planet.get_coords()
     # TODO: clip planet off screen
-    sx = viewpoint[0] + cx * zoom_factor
-    sy = viewpoint[1] + cy * zoom_factor
+    sx = cx * zoom_factor - viewpoint[0]
+    sy = cy * zoom_factor - viewpoint[1]
     zoomed_radius = rad * zoom_factor
     draw.circle(sx, sy, zoomed_radius)
 
@@ -29,8 +32,8 @@ def render_ship(ship):
         for curr in range(len(edge) - 1): # well fuck
             curr_vert = edge[curr]
             next_vert = edge[curr+1]
-            x0 = viewpoint[0] + (cx + verts[curr_vert][0]) * zoom_factor
-            y0 = viewpoint[1] + (cy + verts[curr_vert][1]) * zoom_factor
-            x1 = viewpoint[0] + (cx + verts[next_vert][0]) * zoom_factor
-            y1 = viewpoint[1] + (cy + verts[next_vert][1]) * zoom_factor
+            x0 = (cx + verts[curr_vert][0]) * zoom_factor - viewpoint[0]
+            y0 = (cy + verts[curr_vert][1]) * zoom_factor - viewpoint[1]
+            x1 = (cx + verts[next_vert][0]) * zoom_factor - viewpoint[0]
+            y1 = (cy + verts[next_vert][1]) * zoom_factor - viewpoint[1]
             draw.line(x0, y0, x1, y1)
