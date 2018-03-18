@@ -12,4 +12,4 @@ while not draw.is_window_closed():
     Renderer.render_ship(shp)
     Renderer.zoom_factor *= 1.00001
     draw.flush_screen()
-    draw.clear_screen()
+    draw.clear_screen(0, 0, 16)

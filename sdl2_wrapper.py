@@ -32,7 +32,8 @@ def is_window_closed():
     return False
 
 
-def clear_screen(color=sdl.Color(0, 0, 0)):
+def clear_screen(r=0, g=0, b=0):
+    color = sdl.Color(r, g, b)
     renderer.clear(color)
 
 
