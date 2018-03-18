@@ -5,10 +5,11 @@ from space2d.Planet import Planet
 import debug
 import time
 
-debug.do()
-
-
 draw.init()
+
+debug.do()
+time.sleep(10.0)
+
 shp = ObjectWithModel(0, 0)
 planet = Planet(10.0, 50.0)
 draw.set_color(128, 0, 200)

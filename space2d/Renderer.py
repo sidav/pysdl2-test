@@ -24,12 +24,13 @@ def render_ship(ship):
     model2d = ship.get_model()
     verts = ship.get_rotated_vertices()
     edges = model2d.get_edges()
+    cx, cy = ship.get_coords()
     for edge in edges:
         for curr in range(len(edge) - 1): # well fuck
             curr_vert = edge[curr]
             next_vert = edge[curr+1]
-            x0 = viewpoint[0] + verts[curr_vert][0] * zoom_factor
-            y0 = viewpoint[1] + verts[curr_vert][1] * zoom_factor
-            x1 = viewpoint[0] + verts[next_vert][0] * zoom_factor
-            y1 = viewpoint[1] + verts[next_vert][1] * zoom_factor
+            x0 = viewpoint[0] + (cx + verts[curr_vert][0]) * zoom_factor
+            y0 = viewpoint[1] + (cy + verts[curr_vert][1]) * zoom_factor
+            x1 = viewpoint[0] + (cx + verts[next_vert][0]) * zoom_factor
+            y1 = viewpoint[1] + (cy + verts[next_vert][1]) * zoom_factor
             draw.line(x0, y0, x1, y1)
