@@ -1,12 +1,12 @@
 from .SpaceObject import SpaceObject
 from .Model2d import Model2d
-from .Math import multiply_vector_by_matrix
+from .Math import *
 
 class Ship(SpaceObject):
 
     rotation_matrix = [
-        [1, 0],
-        [0, 1]
+        [1.0, 0.0],
+        [0.0, 1.0]
     ]
 
     model = None
@@ -25,3 +25,6 @@ class Ship(SpaceObject):
             rot.append(multiply_vector_by_matrix(vert, self.rotation_matrix))
         return rot
 
+    def rotate(self, angle):
+        self.rotation_matrix = rotate_matrix(self.rotation_matrix, angle)
+        # pass

@@ -1,15 +1,19 @@
 import sdl2_wrapper as draw
 from space2d import Renderer
 from space2d.Ship import Ship
-draw.init()
+import debug
+import time
 
-# renderer.
-# draw.line(1, 1, 100, 200)
-# draw.circle(0, 0, 250)
+debug.do()
+
+
+draw.init()
 shp = Ship()
 draw.set_color(128, 0, 200)
 while not draw.is_window_closed():
-    Renderer.render_ship(shp)
-    Renderer.zoom_factor *= 1.00001
-    draw.flush_screen()
     draw.clear_screen(0, 0, 16)
+    Renderer.render_ship(shp)
+    Renderer.zoom_factor *= 0.99
+    draw.flush_screen()
+    time.sleep(0.5)
+    shp.rotate(0.2)
