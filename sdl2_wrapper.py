@@ -9,7 +9,7 @@ current_color = sdl.Color(255, 255, 255)
 evh = None
 
 
-def init(windowname='ZOMG FORGOT TO NAME IT', width=320, height=200):
+def init(windowname='ZOMG FORGOT TO NAME IT', width=640, height=400):
     global renderer, window, window_width, window_height
     window_width = width
     window_height = height
