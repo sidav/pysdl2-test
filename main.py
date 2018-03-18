@@ -15,5 +15,5 @@ while not draw.is_window_closed():
     Renderer.render_ship(shp)
     Renderer.zoom_factor *= 0.99
     draw.flush_screen()
-    time.sleep(0.5)
+    time.sleep(0.1)
     shp.rotate(0.2)

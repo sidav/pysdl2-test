@@ -4,15 +4,16 @@ from .Math import *
 
 class Ship(SpaceObject):
 
-    rotation_matrix = [
-        [1.0, 0.0],
-        [0.0, 1.0]
-    ]
+    rotation_matrix = []
 
     model = None
 
     def __init__(self):
         super().__init__()
+        self.rotation_matrix = [
+            [1.0, 0.0],
+            [0.0, 1.0]
+        ]
         self.model = Model2d()
 
     def get_model(self):

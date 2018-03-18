@@ -7,4 +7,11 @@ def do():
         [1.0, 0.0],
         [0.0, 1.0]
     ]
-    print(rotate_matrix(b, 3.141592653589/2.0))
+    b = rotate_matrix(b, 3.141592653589/2.0)
+    print(b)
+    b = rotate_matrix(b, 3.141592653589 / 2.0)
+    print(b)
+    b = rotate_matrix(b, 3.141592653589 / 2.0)
+    print(b)
+    b = rotate_matrix(b, 3.141592653589 / 2.0)
+    print(b)
