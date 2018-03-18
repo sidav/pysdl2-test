@@ -8,5 +8,7 @@ curr_system = None
 def control():
     global curr_system
     curr_system = Starsystem()
-    SystemView.draw_system(curr_system)
-    flush_screen()
+    while True:
+        SystemView.draw_system(curr_system)
+        curr_system.get_player().get_ship().coordy -= 4
+        flush_screen()

@@ -4,8 +4,10 @@ from .Model2d import Model2d
 from .Planet import Planet
 
 viewpoint = (320.0, 200.0)
-zoom_factor = 0.5
+zoom_factor = 0.01
 
+def clear():
+    draw.clear_screen()
 
 def set_viewpoint(x, y):
     WIDTH = draw.window_width
