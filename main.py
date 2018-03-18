@@ -20,8 +20,8 @@ while not draw.is_window_closed():
     draw.clear_screen(0, 0, 16)
     Renderer.render_ship(shp)
     Renderer.set_viewpoint(x, y)
-    x += 1
-    y += 1
+    x -= 1
+    y -= 1
     # Renderer.render_planet(planet)
     # Renderer.zoom_factor *= 0.9
     draw.flush_screen()

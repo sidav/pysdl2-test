@@ -4,14 +4,14 @@ from .Model2d import Model2d
 from .Planet import Planet
 
 viewpoint = (320.0, 200.0)
-zoom_factor = 1.0
+zoom_factor = 0.5
 
 
 def set_viewpoint(x, y):
     WIDTH = draw.window_width
     HEIGHT = draw.window_height
     global viewpoint
-    viewpoint = (x + WIDTH // 2, y + HEIGHT // 2)
+    viewpoint = (x * zoom_factor - WIDTH // 2, y * zoom_factor - HEIGHT // 2)
 
 
 def render_planet(planet):

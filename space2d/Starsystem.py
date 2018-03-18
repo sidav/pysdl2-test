@@ -11,7 +11,7 @@ class Starsystem:
 
     def __init__(self):
         self.planets.append(Planet(0, 0))
-        self.ships.append(Ship(0, - self.planets[0].get_radius() - 25))
+        self.ships.append(Ship(0, - self.planets[0].get_radius() - 30))
         self.player = Player(self.ships[0])
 
     def get_planets_list(self):
