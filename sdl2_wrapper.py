@@ -64,6 +64,22 @@ def line(x1, y1, x2=-1, y2=-1):
         renderer.draw_line([int(x1), int(y1), int(x2), int(y2)], current_color)
 
 
+def filled_triangle(x1, y1, x2, y2, x3, y3):
+    highest_y = y1
+    if y2 < highest_y:
+        highest_y = y2
+    if y3 < highest_y:
+        highest_y = y3
+    lowest_y = y1
+    if y2 > lowest_y:
+        lowest_y = y2
+    if y3 > lowest_y:
+        lowest_y = y3
+    # TODO: do this
+    # Draws filled triangle
+    pass
+
+
 def circle(x0, y0, radius):
     x0 = int(x0)
     y0 = int(y0)
