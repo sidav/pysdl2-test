@@ -92,8 +92,8 @@ def filled_triangle(x1, y1, x2, y2, x3, y3):
     cur_x2 = float(mid_x)
     for y in range(highest_y, lowest_y):
         h_line(cur_x1, cur_x2, y)
-        x1 += left_dx
-        x2 += right_dx
+        cur_x1 += left_dx
+        cur_x2 += right_dx
     # TODO: do this
     # Draws filled triangle
 
