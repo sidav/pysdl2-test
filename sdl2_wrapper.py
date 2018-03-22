@@ -64,20 +64,38 @@ def line(x1, y1, x2=-1, y2=-1):
         renderer.draw_line([int(x1), int(y1), int(x2), int(y2)], current_color)
 
 
+def h_line(x1, x2, y):
+    renderer.draw_line([int(x1), int(y), int(x2), int(y)], current_color)
+
+
 def filled_triangle(x1, y1, x2, y2, x3, y3):
-    highest_y = y1
-    if y2 < highest_y:
-        highest_y = y2
-    if y3 < highest_y:
-        highest_y = y3
-    lowest_y = y1
-    if y2 > lowest_y:
-        lowest_y = y2
-    if y3 > lowest_y:
-        lowest_y = y3
+    # highest_y = y1
+    # if y2 < highest_y:
+    #     highest_y = y2
+    # if y3 < highest_y:
+    #     highest_y = y3
+    # lowest_y = y1
+    # if y2 > lowest_y:
+    #     lowest_y = y2
+    # if y3 > lowest_y:
+    #     lowest_y = y3
+    highest_y = min(y1, y2, y3)
+    lowest_y = max(y1, y2, y3)
+    mid_y = y1 + y2 + y3 - highest_y - lowest_y
+    max_x = max(x1, x2, x3)
+    min_x = min(x1, x2, x3)
+    mid_x = x1 + x2 + x3 - max_x - min_x
+    # shit begins here
+    left_dx = (x3-x1) / (y3 - y1)
+    right_dx = (x2-x1) / (y2 - y1)
+    cur_x1 = float(mid_x)
+    cur_x2 = float(mid_x)
+    for y in range(highest_y, lowest_y):
+        h_line(cur_x1, cur_x2, y)
+        x1 += left_dx
+        x2 += right_dx
     # TODO: do this
     # Draws filled triangle
-    pass
 
 
 def circle(x0, y0, radius):
@@ -107,3 +125,5 @@ def circle(x0, y0, radius):
             x -= 1
             dx += 2
             err += dx - (radius * 2)
+
+########## EXPERIMENTAL #####
