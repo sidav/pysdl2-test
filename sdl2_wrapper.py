@@ -63,6 +63,12 @@ def line(x1, y1, x2=-1, y2=-1):
     else:
         renderer.draw_line([int(x1), int(y1), int(x2), int(y2)], current_color)
 
+def multiline(arr_of_verts):
+    fuck = []
+    for v in arr_of_verts:
+        fuck.append(int(v))
+    renderer.draw_line(fuck, current_color)
+
 
 def h_line(x1, x2, y):
     renderer.draw_line([int(x1), int(y), int(x2), int(y)], current_color)
@@ -80,15 +86,23 @@ def filled_triangle(x1, y1, x2, y2, x3, y3):
     mid_vert = 3 - high_vert - low_vert
 
     x_hl = x_hm = vertices[high_vert][0]
+    if vertices[high_vert][1] == vertices[mid_vert][1]:
+        x_hm = vertices[mid_vert][0]
     dx_hl = (vertices[high_vert][0] - vertices[low_vert][0]) / (vertices[high_vert][1] - vertices[low_vert][1])
-    for y in range(vertices[high_vert][1], vertices[mid_vert][1]):
+    if vertices[high_vert][1] - vertices[mid_vert][1] == 0:
+        dx_hm = 0
+    else:
         dx_hm = (vertices[high_vert][0] - vertices[mid_vert][0]) / (vertices[high_vert][1] - vertices[mid_vert][1])
+    for y in range(vertices[high_vert][1], vertices[mid_vert][1]):
         h_line(x_hl, x_hm, y)
         x_hl += dx_hl
         x_hm += dx_hm
     x_ml = x_hm
-    for y in range(vertices[mid_vert][1], vertices[low_vert][1]):
+    if vertices[mid_vert][1] - vertices[low_vert][1] == 0:
+        dx_ml = 0
+    else:
         dx_ml = (vertices[mid_vert][0] - vertices[low_vert][0]) / (vertices[mid_vert][1] - vertices[low_vert][1])
+    for y in range(vertices[mid_vert][1], vertices[low_vert][1]):
         h_line(x_hl, x_ml, y)
         x_hl += dx_hl
         x_ml += dx_ml
