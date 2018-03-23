@@ -1,6 +1,10 @@
 import math
 
 
+def degs_to_rads(degs):
+    return degs * (3.14159265358 / 180.0)
+
+
 def cos(x):
     return math.cos(x)
 

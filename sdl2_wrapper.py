@@ -69,33 +69,29 @@ def h_line(x1, x2, y):
 
 
 def filled_triangle(x1, y1, x2, y2, x3, y3):
-    # highest_y = y1
-    # if y2 < highest_y:
-    #     highest_y = y2
-    # if y3 < highest_y:
-    #     highest_y = y3
-    # lowest_y = y1
-    # if y2 > lowest_y:
-    #     lowest_y = y2
-    # if y3 > lowest_y:
-    #     lowest_y = y3
-    highest_y = min(y1, y2, y3)
-    lowest_y = max(y1, y2, y3)
-    mid_y = y1 + y2 + y3 - highest_y - lowest_y
-    max_x = max(x1, x2, x3)
-    min_x = min(x1, x2, x3)
-    mid_x = x1 + x2 + x3 - max_x - min_x
-    # shit begins here
-    left_dx = (x3-x1) / (y3 - y1)
-    right_dx = (x2-x1) / (y2 - y1)
-    cur_x1 = float(mid_x)
-    cur_x2 = float(mid_x)
-    for y in range(highest_y, lowest_y):
-        h_line(cur_x1, cur_x2, y)
-        cur_x1 += left_dx
-        cur_x2 += right_dx
-    # TODO: do this
-    # Draws filled triangle
+    vertices = [(int(x1), int(y1)), (int(x2), int(y2)), (int(x3), int(y3))]
+    high_vert = 0
+    low_vert = 0
+    for i in [1, 2]:
+        if vertices[high_vert][1] > vertices[i][1]:
+            high_vert = i
+        if vertices[low_vert][1] <= vertices[i][1]:
+            low_vert = i
+    mid_vert = 3 - high_vert - low_vert
+
+    x_hl = x_hm = vertices[high_vert][0]
+    dx_hl = (vertices[high_vert][0] - vertices[low_vert][0]) / (vertices[high_vert][1] - vertices[low_vert][1])
+    for y in range(vertices[high_vert][1], vertices[mid_vert][1]):
+        dx_hm = (vertices[high_vert][0] - vertices[mid_vert][0]) / (vertices[high_vert][1] - vertices[mid_vert][1])
+        h_line(x_hl, x_hm, y)
+        x_hl += dx_hl
+        x_hm += dx_hm
+    x_ml = x_hm
+    for y in range(vertices[mid_vert][1], vertices[low_vert][1]):
+        dx_ml = (vertices[mid_vert][0] - vertices[low_vert][0]) / (vertices[mid_vert][1] - vertices[low_vert][1])
+        h_line(x_hl, x_ml, y)
+        x_hl += dx_hl
+        x_ml += dx_ml
 
 
 def circle(x0, y0, radius):
