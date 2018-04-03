@@ -5,40 +5,43 @@ import sdl2_wrapper as draw
 import random, time
 
 def do():
-    # draw.h_line(5, 200, 5)
-    # draw.circle(320, 200, 50)
+
     points = [(-100, -100), (45, 45), (-45, 45)]
-    # for j in range(len(points)):
-    #     points[j] = rotate_vector(points[j], degs_to_rads(73))
 
-    draw.filled_circle(320, 200, 50)
-    draw.flush_screen()
-    time.sleep(5)
-
-    for i in range(360):
-        draw.set_color(255, 0, 255)
-        draw.multiline([points[0][0]+200, points[0][1]+200, points[1][0]+200, points[1][1]+200,
-                             points[2][0]+200, points[2][1]+200, points[0][0]+200, points[0][1]+200])
-        draw.set_color(255, 255, 255)
-        draw.filled_triangle(points[0][0]+200, points[0][1]+200, points[1][0]+200, points[1][1]+200,
-                             points[2][0]+200, points[2][1]+200)
-        draw.flush_screen()
-        # print(points)
-        # time.sleep(0.001)
-        for j in range(len(points)):
-            points[j] = rotate_vector(points[j], 3.14159/180.0)
-        draw.clear_screen()
+    # draw.filled_circle(320, 200, 50)
+    # draw.flush_screen()
+    # time.sleep(5)
+    #
+    # for i in range(360):
+    #     draw.set_color(255, 0, 255)
+    #     draw.multiline([points[0][0]+200, points[0][1]+200, points[1][0]+200, points[1][1]+200,
+    #                          points[2][0]+200, points[2][1]+200, points[0][0]+200, points[0][1]+200])
+    #     draw.set_color(255, 255, 255)
+    #     draw.filled_triangle(points[0][0]+200, points[0][1]+200, points[1][0]+200, points[1][1]+200,
+    #                          points[2][0]+200, points[2][1]+200)
+    #     draw.flush_screen()
+    #     # print(points)
+    #     time.sleep(0.1)
+    #     for j in range(len(points)):
+    #         points[j] = rotate_vector(points[j], 3.14159/180.0)
+    #     draw.clear_screen()
 
     start_time = time.time()
     for i in range(100):
         draw.set_color(random.randint(0, 255),random.randint(0, 255),random.randint(0, 255))
         draw.filled_triangle(random.randint(0, 640),random.randint(0, 400),random.randint(0, 640),random.randint(0, 400),
                              random.randint(0, 640),random.randint(0, 400))
-        #draw.flush_screen()
-        # draw.clear_screen()
     draw.flush_screen()
     elapsed_time = time.time() - start_time
-    print(elapsed_time)
+    print('Time for 100 triangles: {}'.format(elapsed_time))
+
+    start_time = time.time()
+    for i in range(100):
+        draw.set_color(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+        draw.filled_circle(random.randint(0, 640), random.randint(0, 400), random.randint(0, 640))
+    draw.flush_screen()
+    elapsed_time = time.time() - start_time
+    print('Time for 100 circles: {}'.format(elapsed_time))
     # SystemController.control()
 
 def render_triangle(mdl):
