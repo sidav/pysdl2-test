@@ -108,6 +108,30 @@ def filled_triangle(x1, y1, x2, y2, x3, y3):
         x_ml += dx_ml
 
 
+def filled_circle(x0, y0, radius):
+    x0 = int(x0)
+    y0 = int(y0)
+    radius = int(radius)
+    x = radius
+    y = 0
+    dx = 1
+    dy = 1
+    err = dx - (radius * 2)
+    while x >= y:
+        h_line(x0 - x, x0 + x, y0 + y)
+        h_line(x0 - x, x0 + x, y0 - y)
+        h_line(x0 - y, x0 + y, y0 + x)
+        h_line(x0 - y, x0 + y, y0 - x)
+        if err <= 0:
+            y += 1
+            err += dy
+            dy += 2
+        if err > 0:
+            x -= 1
+            dx += 2
+            err += dx - (radius * 2)
+
+
 def circle(x0, y0, radius):
     x0 = int(x0)
     y0 = int(y0)

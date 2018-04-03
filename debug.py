@@ -11,6 +11,10 @@ def do():
     # for j in range(len(points)):
     #     points[j] = rotate_vector(points[j], degs_to_rads(73))
 
+    draw.filled_circle(320, 200, 50)
+    draw.flush_screen()
+    time.sleep(5)
+
     for i in range(360):
         draw.set_color(255, 0, 255)
         draw.multiline([points[0][0]+200, points[0][1]+200, points[1][0]+200, points[1][1]+200,
