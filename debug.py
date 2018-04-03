@@ -26,22 +26,9 @@ def do():
     #         points[j] = rotate_vector(points[j], 3.14159/180.0)
     #     draw.clear_screen()
 
-    start_time = time.time()
-    for i in range(100):
-        draw.set_color(random.randint(0, 255),random.randint(0, 255),random.randint(0, 255))
-        draw.filled_triangle(random.randint(0, 640),random.randint(0, 400),random.randint(0, 640),random.randint(0, 400),
-                             random.randint(0, 640),random.randint(0, 400))
-    draw.flush_screen()
-    elapsed_time = time.time() - start_time
-    print('Time for 100 triangles: {}'.format(elapsed_time))
-
-    start_time = time.time()
-    for i in range(100):
-        draw.set_color(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
-        draw.filled_circle(random.randint(0, 640), random.randint(0, 400), random.randint(0, 640))
-    draw.flush_screen()
-    elapsed_time = time.time() - start_time
-    print('Time for 100 circles: {}'.format(elapsed_time))
+    count_exec_time(draw_n_triangles, '100 triangles')
+    count_exec_time(draw_n_circles, '100 circles')
+    count_exec_time(draw.flush_screen, 'buffer output')
     # SystemController.control()
 
 def render_triangle(mdl):
@@ -58,3 +45,23 @@ def render_triangle(mdl):
             x1 = (cx + verts[next_vert][0]) + 200
             y1 = (cy + verts[next_vert][1]) + 200
             draw.line(x0, y0, x1, y1)
+
+
+def draw_n_triangles():
+    for i in range(100):
+        draw.set_color(random.randint(0, 255),random.randint(0, 255),random.randint(0, 255))
+        draw.filled_triangle(random.randint(0, 640),random.randint(0, 400),random.randint(0, 640),random.randint(0, 400),
+                             random.randint(0, 640),random.randint(0, 400))
+
+
+def draw_n_circles():
+    for i in range(100):
+        draw.set_color(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+        draw.filled_circle(random.randint(0, 640), random.randint(0, 400), random.randint(0, 100))
+
+
+def count_exec_time(func, text):
+    start_time = time.time()
+    func()
+    elapsed_time = time.time() - start_time
+    print('Time for {}: {}'.format(text, elapsed_time))
